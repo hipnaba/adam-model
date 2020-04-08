@@ -1,6 +1,7 @@
 {
   "name": "hipnaba/adam-model",
   "description": "ADAM's object model.",
+  "license": "WTFPL",
 
   "require": {
     "php": "^7.4",
