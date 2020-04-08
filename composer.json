@@ -5,19 +5,14 @@
 
   "require": {
     "php": "^7.4",
-    "doctrine/orm": "^2.7"
+    "laminas/laminas-servicemanager": "^3.4",
+    "hipnaba/indigo-orm": "^0.9"
   },
 
   "autoload": {
     "psr-4": {
       "Adam\\Model\\": "src"
     }
-  },
-
-  "require-dev": {
-    "laminas/laminas-config-aggregator": "^1.2",
-    "laminas/laminas-servicemanager": "^3.4",
-    "hipnaba/indigo-orm": "^0.9"
   },
 
   "scripts": {
