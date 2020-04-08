@@ -1,0 +1,28 @@
+{
+  "name": "hipnaba/adam-model",
+  "description": "ADAM's object model.",
+
+  "require": {
+    "php": "^7.4",
+    "doctrine/orm": "^2.7"
+  },
+
+  "autoload": {
+    "psr-4": {
+      "Adam\\Model\\": "src"
+    }
+  },
+
+  "require-dev": {
+    "laminas/laminas-config-aggregator": "^1.2",
+    "laminas/laminas-servicemanager": "^3.4",
+    "hipnaba/indigo-orm": "dev-master"
+  },
+
+  "scripts": {
+    "create-schema": "doctrine orm:schema-tool:create",
+    "update-schema": "doctrine orm:schema-tool:update --force",
+    "drop-schema": "doctrine orm:schema-tool:drop --force",
+    "reset-schema": "composer drop-schema && composer create-schema"
+  }
+}
