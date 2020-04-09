@@ -2,8 +2,8 @@
 namespace Adam\Model\Entity\Celestial;
 
 
-use Adam\Model\Entity\Traits\IdTrait;
-use Adam\Model\Entity\Traits\NameTrait;
+use Adam\Model\Traits\IdTrait;
+use Adam\Model\Traits\NameTrait;
 use Doctrine\ORM\Mapping as ORM;
 
 /**

@@ -1,5 +1,5 @@
 <?php
-namespace Adam\Model\Entity\Traits;
+namespace Adam\Model\Traits\Item;
 
 use Adam\Model\Entity\Item\ItemIcon;
 use Doctrine\ORM\Mapping as ORM;
@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Trait IconTrait
  *
- * @package Adam\Model\Entity\Traits
+ * @package Adam\Model\Traits\Item
  * @author Danijel Fabijan <hipnaba@gmail.com>
  * @link https://github.com/hipnaba/adam-model
  */

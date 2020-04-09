@@ -1,8 +1,8 @@
 <?php
 namespace Adam\Model\Entity\Item;
 
-use Adam\Model\Entity\Traits\DescriptionTrait;
-use Adam\Model\Entity\Traits\IdTrait;
+use Adam\Model\Traits\DescriptionTrait;
+use Adam\Model\Traits\IdTrait;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @author Danijel Fabijan <hipnaba@gmail.com>
  * @link https://github.com/hipnaba/adam-model
  *
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="\Adam\Model\Repository\Item\ItemIconRepository")
  * @ORM\Table(name="item_icon")
  */
 class ItemIcon

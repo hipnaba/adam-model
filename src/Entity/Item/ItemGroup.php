@@ -1,9 +1,9 @@
 <?php
 namespace Adam\Model\Entity\Item;
 
-use Adam\Model\Entity\Traits\IdTrait;
-use Adam\Model\Entity\Traits\NameTrait;
-use Adam\Model\Entity\Traits\PublishedTrait;
+use Adam\Model\Traits\IdTrait;
+use Adam\Model\Traits\NameTrait;
+use Adam\Model\Traits\PublishedTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;

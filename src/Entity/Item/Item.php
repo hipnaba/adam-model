@@ -1,7 +1,7 @@
 <?php
 namespace Adam\Model\Entity\Item;
 
-use Adam\Model\Entity\Traits\IdTrait;
+use Adam\Model\Traits\IdTrait;
 use Doctrine\ORM\Mapping as ORM;
 
 /**

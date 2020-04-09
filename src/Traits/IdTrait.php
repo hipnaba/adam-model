@@ -1,12 +1,12 @@
 <?php
-namespace Adam\Model\Entity\Traits;
+namespace Adam\Model\Traits;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Trait IdTrait
  *
- * @package Adam\Model\Entity\Traits
+ * @package Adam\Model\Traits
  * @author Danijel Fabijan <hipnaba@gmail.com>
  * @link https://github.com/hipnaba/adam-model
  */

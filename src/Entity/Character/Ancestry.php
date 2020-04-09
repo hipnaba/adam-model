@@ -1,9 +1,9 @@
 <?php
 namespace Adam\Model\Entity\Character;
 
-use Adam\Model\Entity\Traits\ItemIconTrait;
-use Adam\Model\Entity\Traits\IdTrait;
-use Adam\Model\Entity\Traits\NameTrait;
+use Adam\Model\Traits\IdTrait;
+use Adam\Model\Traits\Item\ItemIconTrait;
+use Adam\Model\Traits\NameTrait;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
