@@ -15,7 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @author Danijel Fabijan <hipnaba@gmail.com>
  * @link https://bitbucket.org/hipnaba/adam
  *
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="\Adam\Model\Repository\Item\ItemCategoryRepository")
  * @ORM\Table(name="item_category")
  */
 class ItemCategory
