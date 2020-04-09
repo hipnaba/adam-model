@@ -26,6 +26,7 @@ class ItemCategory
 
     /**
      * @ORM\OneToMany(targetEntity="\Adam\Model\Entity\Item\ItemGroup", mappedBy="category")
+     * @ORM\OrderBy({"name" = "ASC"})
      */
     private Collection $groups;
 

@@ -32,6 +32,7 @@ class ItemGroup
 
     /**
      * @ORM\OneToMany(targetEntity="\Adam\Model\Entity\Item\ItemType", mappedBy="group")
+     * @ORM\OrderBy({"name" = "ASC"})
      */
     private Collection $types;
 
