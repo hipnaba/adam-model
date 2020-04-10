@@ -29,9 +29,14 @@ abstract class Item
     protected ItemType $type;
 
     /**
-     * @ORM\Column(type="object")
+     * @ORM\Column(type="object", nullable=true)
      */
-    protected ItemPosition $position;
+    protected ?ItemPosition $position;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    protected ?float $radius;
 
     /**
      * Item constructor.
@@ -47,5 +52,13 @@ abstract class Item
     public function getType(): ItemType
     {
         return $this->type;
+    }
+
+    /**
+     * @return float|null
+     */
+    public function getRadius(): ?float
+    {
+        return $this->radius;
     }
 }
