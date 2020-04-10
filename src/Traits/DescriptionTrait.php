@@ -24,4 +24,12 @@ trait DescriptionTrait
     {
         return $this->description ?? '';
     }
+
+    /**
+     * @param string|null $description
+     */
+    public function setDescription(?string $description): void
+    {
+        $this->description = $description;
+    }
 }
