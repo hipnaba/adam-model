@@ -1,6 +1,7 @@
 <?php
 namespace Adam\Model\Entity\Item;
 
+use Adam\Model\Entity\Character\Race;
 use Adam\Model\Traits\IdTrait;
 use Adam\Model\Traits\Item\ItemIconTrait;
 use Adam\Model\Traits\NameTrait;
@@ -29,6 +30,19 @@ class ItemType
      * @ORM\JoinColumn(name="group_id", referencedColumnName="id", nullable=true)
      */
     private ?ItemGroup $group;
+
+    // TODO: market group
+
+    /**
+     * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Character\Race")
+     * @ORM\JoinColumn(name="race_id", referencedColumnName="id", nullable=true)
+     */
+    private ?Race $race;
+
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private ?float $base_price;
 
     /**
      * @ORM\Column(type="float", nullable=true)
@@ -66,6 +80,14 @@ class ItemType
     public function getGroup(): ?ItemGroup
     {
         return $this->group;
+    }
+
+    /**
+     * @return Race|null
+     */
+    public function getRace(): ?Race
+    {
+        return $this->race;
     }
 
     /**
