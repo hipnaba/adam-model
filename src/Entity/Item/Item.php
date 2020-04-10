@@ -1,7 +1,6 @@
 <?php
 namespace Adam\Model\Entity\Item;
 
-use Adam\Model\Entity\Core\Position;
 use Adam\Model\Traits\IdTrait;
 use Adam\Model\Traits\NameTrait;
 use Doctrine\ORM\Mapping as ORM;
@@ -32,14 +31,14 @@ abstract class Item
     /**
      * @ORM\Column(type="object")
      */
-    protected Position $position;
+    protected ItemPosition $position;
 
     /**
      * Item constructor.
      */
     public function __construct()
     {
-        $this->position = new Position();
+        $this->position = new ItemPosition();
     }
 
     /**

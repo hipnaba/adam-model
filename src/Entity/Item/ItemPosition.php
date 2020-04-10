@@ -1,14 +1,14 @@
 <?php
-namespace Adam\Model\Entity\Core;
+namespace Adam\Model\Entity\Item;
 
 /**
  * Class Position
  *
- * @package Adam\Model\Entity\Core
+ * @package Adam\Model\Entity\Item
  * @author Danijel Fabijan <hipnaba@gmail.com>
  * @link https://github.com/hipnaba/adam-model
  */
-final class Position
+final class ItemPosition
 {
     private float $x;
     private float $y;
