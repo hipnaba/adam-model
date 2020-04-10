@@ -6,6 +6,8 @@ use Adam\Model\Traits\IdTrait;
 use Adam\Model\Traits\Item\ItemIconTrait;
 use Adam\Model\Traits\NameTrait;
 use Adam\Model\Traits\PublishedTrait;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -24,6 +26,12 @@ class ItemType
     use NameTrait;
     use ItemIconTrait;
     use PublishedTrait;
+
+    /**
+     * @ORM\OneToMany(targetEntity="\Adam\Model\Entity\Item\Item", mappedBy="type")
+     * @ORM\OrderBy({"name" = "ASC"})
+     */
+    private Collection $items;
 
     /**
      * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Item\ItemGroup", inversedBy="types")
@@ -73,6 +81,22 @@ class ItemType
      * @ORM\Column(type="float", nullable=true)
      */
     private ?float $volume;
+
+    /**
+     * ItemType constructor.
+     */
+    public function __construct()
+    {
+        $this->items = new ArrayCollection();
+    }
+
+    /**
+     * @return ArrayCollection|Collection
+     */
+    public function getItems()
+    {
+        return $this->items;
+    }
 
     /**
      * @return ItemGroup|null

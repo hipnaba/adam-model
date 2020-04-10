@@ -23,7 +23,7 @@ abstract class Item
     use NameTrait;
 
     /**
-     * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Item\ItemType")
+     * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Item\ItemType", inversedBy="items")
      * @ORM\JoinColumn(name="type_id", referencedColumnName="id")
      */
     protected ItemType $type;
