@@ -1,6 +1,8 @@
 <?php
 namespace Adam\Model\Entity\Character;
 
+use Adam\Model\Traits\IdTrait;
+use Adam\Model\Traits\NameTrait;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -15,24 +17,13 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Character
 {
-    /**
-     * @ORM\Id()
-     * @ORM\Column(type="integer")
-     */
-    private int $id;
+    use IdTrait;
+    use NameTrait;
 
     /**
      * @ORM\Column(type="string")
      */
     private string $ownerHash;
-
-    /**
-     * @return int
-     */
-    public function getId(): int
-    {
-        return $this->id;
-    }
 
     /**
      * @return string
