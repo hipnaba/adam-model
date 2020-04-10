@@ -42,7 +42,7 @@ class ItemGroup
     /**
      * @ORM\Column(type="boolean")
      */
-    private bool $fittableNonSingleton;
+    private bool $fittable_non_singleton;
 
     /**
      * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Item\ItemCategory", inversedBy="groups")
@@ -107,8 +107,8 @@ class ItemGroup
     /**
      * @return bool
      */
-    public function isFittableNonSingleton(): bool
+    public function isFittableNonsingleton(): bool
     {
-        return $this->fittableNonSingleton;
+        return $this->fittable_non_singleton;
     }
 }
