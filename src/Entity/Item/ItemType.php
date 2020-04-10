@@ -91,9 +91,9 @@ class ItemType
     }
 
     /**
-     * @return ArrayCollection|Collection
+     * @return Item[]|Collection
      */
-    public function getItems()
+    public function getItems(): Collection
     {
         return $this->items;
     }
