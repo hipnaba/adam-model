@@ -1,6 +1,7 @@
 <?php
 namespace Adam\Model\Entity\Item;
 
+use Adam\Model\Traits\DescriptionTrait;
 use Adam\Model\Traits\IdTrait;
 use Adam\Model\Traits\NameTrait;
 use Doctrine\ORM\Mapping as ORM;
@@ -21,6 +22,7 @@ abstract class Item
 {
     use IdTrait;
     use NameTrait;
+    use DescriptionTrait;
 
     /**
      * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Item\ItemType", inversedBy="items")
