@@ -3,6 +3,8 @@ namespace Adam\Model\Entity\Celestial;
 
 use Adam\Model\Entity\Character\Faction;
 use Adam\Model\Entity\Item\Item;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -24,10 +26,32 @@ class Region extends Item
     private ?Faction $faction;
 
     /**
+     * @ORM\OneToMany(targetEntity="\Adam\Model\Entity\Celestial\Constellation", mappedBy="region")
+     */
+    private Collection $constellations;
+
+    /**
+     * Region constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->constellations = new ArrayCollection();
+    }
+
+    /**
      * @return Faction|null
      */
     public function getFaction(): ?Faction
     {
         return $this->faction;
+    }
+
+    /**
+     * @return Constellation[]|Collection
+     */
+    public function getConstellations(): Collection
+    {
+        return $this->constellations;
     }
 }
