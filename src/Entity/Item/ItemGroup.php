@@ -25,6 +25,26 @@ class ItemGroup
     use PublishedTrait;
 
     /**
+     * @ORM\Column(type="boolean")
+     */
+    private bool $use_base_price;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private bool $anchored;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private bool $anchorable;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private bool $fittableNonSingleton;
+
+    /**
      * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Item\ItemCategory", inversedBy="groups")
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
@@ -58,5 +78,37 @@ class ItemGroup
     public function getTypes(): Collection
     {
         return $this->types;
+    }
+
+    /**
+     * @return bool
+     */
+    public function usesBasePrice(): bool
+    {
+        return $this->use_base_price;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAnchored(): bool
+    {
+        return $this->anchored;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAnchorable(): bool
+    {
+        return $this->anchorable;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isFittableNonSingleton(): bool
+    {
+        return $this->fittableNonSingleton;
     }
 }
