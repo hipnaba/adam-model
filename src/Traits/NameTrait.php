@@ -15,7 +15,7 @@ trait NameTrait
     /**
      * @ORM\Column(type="string")
      */
-    private string $name;
+    protected string $name;
 
     /**
      * @return string

@@ -16,7 +16,7 @@ trait IdTrait
      * @ORM\Id()
      * @ORM\Column(type="integer")
      */
-    private int $id;
+    protected int $id;
 
     /**
      * @return int

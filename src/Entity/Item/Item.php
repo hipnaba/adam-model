@@ -1,7 +1,9 @@
 <?php
 namespace Adam\Model\Entity\Item;
 
+use Adam\Model\Entity\Core\Position;
 use Adam\Model\Traits\IdTrait;
+use Adam\Model\Traits\NameTrait;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -19,12 +21,26 @@ use Doctrine\ORM\Mapping as ORM;
 abstract class Item
 {
     use IdTrait;
+    use NameTrait;
 
     /**
      * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Item\ItemType")
      * @ORM\JoinColumn(name="type_id", referencedColumnName="id")
      */
-    private ItemType $type;
+    protected ItemType $type;
+
+    /**
+     * @ORM\Column(type="object")
+     */
+    protected Position $position;
+
+    /**
+     * Item constructor.
+     */
+    public function __construct()
+    {
+        $this->position = new Position();
+    }
 
     /**
      * @return ItemType
