@@ -19,15 +19,19 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class System extends Item
 {
-    // TODO: planets
     // TODO: star
-    // TODO: stargates
 
     /**
      * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Celestial\Constellation", inversedBy="systems")
      * @ORM\JoinColumn(name="constellation_id", referencedColumnName="id")
      */
     private Constellation $constellation;
+
+    /**
+     * @ORM\OneToMany(targetEntity="\Adam\Model\Entity\Celestial\Planet", mappedBy="system")
+     * @ORM\OrderBy({"celestial_index" = "ASC"})
+     */
+    private Collection $planets;
 
     /**
      * @ORM\OneToMany(targetEntity="\Adam\Model\Entity\Celestial\Stargate", mappedBy="system")
@@ -60,6 +64,7 @@ class System extends Item
     public function __construct()
     {
         parent::__construct();
+        $this->planets = new ArrayCollection();
         $this->stargates = new ArrayCollection();
         $this->stations = new ArrayCollection();
     }
@@ -78,6 +83,14 @@ class System extends Item
     public function getConstellation(): Constellation
     {
         return $this->constellation;
+    }
+
+    /**
+     * @return Planet[]|Collection
+     */
+    public function getPlanets()
+    {
+        return $this->planets;
     }
 
     /**
