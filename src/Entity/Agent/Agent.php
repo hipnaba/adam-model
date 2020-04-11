@@ -31,12 +31,6 @@ class Agent extends Character
     private Item $corporation;
 
     /**
-     * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Item\Item")
-     * @ORM\JoinColumn(name="location_id", referencedColumnName="id")
-     */
-    private Item $location;
-
-    /**
      * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Corporation\CorporationDivision")
      * @ORM\JoinColumn(name="division_id", referencedColumnName="id")
      */
@@ -71,14 +65,6 @@ class Agent extends Character
     public function getCorporation(): Item
     {
         return $this->corporation;
-    }
-
-    /**
-     * @return Item
-     */
-    public function getLocation(): Item
-    {
-        return $this->location;
     }
 
     /**

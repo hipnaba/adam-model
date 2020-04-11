@@ -34,10 +34,24 @@ class Item
     protected ?ItemType $type;
 
     /**
+     * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Item\Item")
+     * @ORM\JoinColumn(name="location_id", referencedColumnName="id", nullable=true)
+     */
+    private ?Item $location;
+
+    /**
      * @return ItemType|null
      */
     public function getType(): ?ItemType
     {
         return $this->type;
+    }
+
+    /**
+     * @return Item|null
+     */
+    public function getLocation(): ?Item
+    {
+        return $this->location;
     }
 }
