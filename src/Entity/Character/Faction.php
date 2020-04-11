@@ -11,21 +11,20 @@ use Doctrine\ORM\Mapping as ORM;
  * @author Danijel Fabijan <hipnaba@gmail.com>
  * @link https://github.com/hipnaba/adam-model
  *
- * @ORM\Entity()
  * @ORM\Table(name="character_faction")
  */
 final class Faction extends Item
 {
     /**
-     * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Character\Race")
+     * @ORM\ManyToOne(targetEntity="CharacterRace")
      * @ORM\JoinColumn(name="race_id", referencedColumnName="id")
      */
-    private Race $race;
+    private CharacterRace $race;
 
     /**
-     * @return Race
+     * @return CharacterRace
      */
-    public function getRace(): Race
+    public function getRace(): CharacterRace
     {
         return $this->race;
     }

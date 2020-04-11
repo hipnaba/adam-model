@@ -17,7 +17,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity()
  * @ORM\Table(name="character_race")
  */
-class Race
+class CharacterRace
 {
     use IdTrait;
     use NameTrait;
