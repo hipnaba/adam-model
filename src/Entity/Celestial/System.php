@@ -30,6 +30,11 @@ class System extends Item
     private Constellation $constellation;
 
     /**
+     * @ORM\OneToMany(targetEntity="\Adam\Model\Entity\Celestial\Stargate", mappedBy="system")
+     */
+    private Collection $stargates;
+
+    /**
      * @ORM\OneToMany(targetEntity="\Adam\Model\Entity\Station\Station", mappedBy="system")
      */
     private Collection $stations;
@@ -50,6 +55,7 @@ class System extends Item
     public function __construct()
     {
         parent::__construct();
+        $this->stargates = new ArrayCollection();
         $this->stations = new ArrayCollection();
     }
 
@@ -67,6 +73,14 @@ class System extends Item
     public function getConstellation(): Constellation
     {
         return $this->constellation;
+    }
+
+    /**
+     * @return Stargate[]|Collection
+     */
+    public function getStargates(): Collection
+    {
+        return $this->stargates;
     }
 
     /**
