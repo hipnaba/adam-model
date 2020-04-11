@@ -28,6 +28,7 @@ final class ConfigProvider
         return [
             'entity_paths' => [
                 __DIR__ . '/Entity/Item',
+                __DIR__ . '/Entity/Market',
             ],
         ];
     }

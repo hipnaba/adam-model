@@ -1,7 +1,7 @@
 <?php
 namespace Adam\Model\Entity\Item;
 
-use Adam\Model\Entity\Character\Race;
+use Adam\Model\Entity\Market\MarketGroup;
 use Adam\Model\Traits\IdTrait;
 use Adam\Model\Traits\Item\ItemIconTrait;
 use Adam\Model\Traits\NameTrait;
@@ -39,13 +39,11 @@ class ItemType
      */
     private ?ItemGroup $group;
 
-    // TODO: market group
-
     /**
-     * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Character\Race")
-     * @ORM\JoinColumn(name="race_id", referencedColumnName="id", nullable=true)
+     * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Market\MarketGroup", inversedBy="types")
+     * @ORM\JoinColumn(name="market_group_id", referencedColumnName="id", nullable=true)
      */
-    private ?Race $race;
+    private ?MarketGroup $marketGroup;
 
     /**
      * @ORM\Column(type="float", nullable=true)
@@ -107,14 +105,6 @@ class ItemType
     }
 
     /**
-     * @return Race|null
-     */
-    public function getRace(): ?Race
-    {
-        return $this->race;
-    }
-
-    /**
      * @return float|null
      */
     public function getCapacity(): ?float
@@ -160,5 +150,13 @@ class ItemType
     public function getVolume(): ?float
     {
         return $this->volume;
+    }
+
+    /**
+     * @return MarketGroup|null
+     */
+    public function getMarketGroup(): ?MarketGroup
+    {
+        return $this->marketGroup;
     }
 }
