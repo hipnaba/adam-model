@@ -18,7 +18,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Station extends Item
 {
     /**
-     * @ORM\ManyToOne(targetEntity="System", inversedBy="stations")
+     * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Celestial\System", inversedBy="stations")
      * @ORM\JoinColumn(name="solar_system_id", referencedColumnName="id")
      */
     private System $solar_system;
