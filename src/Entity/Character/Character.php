@@ -19,9 +19,15 @@ class Character extends Item
 {
     /**
      * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Character\CharacterAncestry")
-     * @ORM\JoinColumn(name="ancestry_id", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(name="ancestry_id", referencedColumnName="id", nullable=true)
      */
-    private CharacterAncestry $ancestry;
+    private ?CharacterAncestry $ancestry;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Character\CharacterBloodline")
+     * @ORM\JoinColumn(name="bloodline_id", referencedColumnName="id", nullable=false)
+     */
+    private CharacterBloodline $bloodline;
 
     /**
      * @ORM\Column(type="datetimetz_immutable")
@@ -82,5 +88,13 @@ class Character extends Item
     public function getCorporation(): Item
     {
         return $this->corporation;
+    }
+
+    /**
+     * @return CharacterBloodline
+     */
+    public function getBloodline(): CharacterBloodline
+    {
+        return $this->bloodline;
     }
 }
