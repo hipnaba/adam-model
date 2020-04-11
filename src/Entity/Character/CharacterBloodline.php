@@ -7,6 +7,7 @@ use Adam\Model\Traits\DescriptionTrait;
 use Adam\Model\Traits\IdTrait;
 use Adam\Model\Traits\Item\ItemIconTrait;
 use Adam\Model\Traits\NameTrait;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -37,6 +38,12 @@ class CharacterBloodline
      * @ORM\JoinColumn(name="corporation_id", referencedColumnName="id", nullable=false)
      */
     private Item $corporation;
+
+    /**
+     * @ORM\OneToMany(targetEntity="\Adam\Model\Entity\Character\CharacterAncestry", mappedBy="bloodline")
+     * @ORM\OrderBy({"name" = "ASC"})
+     */
+    private Collection $ancestries;
 
     /**
      * @ORM\Column(type="text")
@@ -196,5 +203,13 @@ class CharacterBloodline
     public function getWillpower(): int
     {
         return $this->willpower;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getAncestries(): Collection
+    {
+        return $this->ancestries;
     }
 }
