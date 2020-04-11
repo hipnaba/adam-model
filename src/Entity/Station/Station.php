@@ -21,7 +21,7 @@ class Station extends Item
      * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Celestial\System", inversedBy="stations")
      * @ORM\JoinColumn(name="solar_system_id", referencedColumnName="id")
      */
-    private System $solar_system;
+    private System $system;
 
     // TODO: owner
     // TODO: race
@@ -54,9 +54,9 @@ class Station extends Item
     /**
      * @return System
      */
-    public function getSolarSystem(): System
+    public function getSystem(): System
     {
-        return $this->solar_system;
+        return $this->system;
     }
 
     /**
