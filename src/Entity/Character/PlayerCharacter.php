@@ -15,9 +15,9 @@ use Doctrine\ORM\Mapping as ORM;
  * @link https://github.com/hipnaba/adam-model
  *
  * @ORM\Entity(repositoryClass="\Adam\Model\Repository\Character\CharacterRepository")
- * @ORM\Table(name="character_character")
+ * @ORM\Table(name="character_player")
  */
-class Character
+class PlayerCharacter
 {
     use IdTrait;
     use NameTrait;
