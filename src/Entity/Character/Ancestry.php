@@ -22,10 +22,10 @@ class Ancestry
     use ItemIconTrait;
 
     /**
-     * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Character\Bloodline", inversedBy="ancestries")
+     * @ORM\ManyToOne(targetEntity="CharacterBloodline", inversedBy="ancestries")
      * @ORM\JoinColumn(name="bloodline_id", referencedColumnName="id")
      */
-    private Bloodline $bloodline;
+    private CharacterBloodline $bloodline;
 
     /**
      * @ORM\Column(type="text")
@@ -33,9 +33,9 @@ class Ancestry
     private ?string $short_description;
 
     /**
-     * @return Bloodline
+     * @return CharacterBloodline
      */
-    public function getBloodline(): Bloodline
+    public function getBloodline(): CharacterBloodline
     {
         return $this->bloodline;
     }
