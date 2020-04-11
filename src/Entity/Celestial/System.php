@@ -50,6 +50,11 @@ class System extends Item
     private ?string $security_class;
 
     /**
+     * @var System[]|Collection
+     */
+    private Collection $adjacentSystems;
+
+    /**
      * SolarSystem constructor.
      */
     public function __construct()
@@ -73,6 +78,29 @@ class System extends Item
     public function getConstellation(): Constellation
     {
         return $this->constellation;
+    }
+
+    /**
+     * @return System[]|Collection
+     */
+    public function getAdjacentSystems(): Collection
+    {
+        if (!isset($this->adjacentSystems)) {
+            $systems = [];
+
+            foreach ($this->getStargates() as $stargate) {
+                $destinationSystem = $stargate->getSystem();
+
+                if (!in_array($destinationSystem, $systems)) {
+                    $systems[] = $destinationSystem;
+                }
+            }
+
+            usort($systems, fn (System $a, System $b) => $a->getName() < $b->getName() ? -1 : 1);
+            $this->adjacentSystems = new ArrayCollection($systems);
+        }
+
+        return $this->adjacentSystems;
     }
 
     /**
