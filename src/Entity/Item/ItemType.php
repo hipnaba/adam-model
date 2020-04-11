@@ -61,19 +61,9 @@ class ItemType
     private ?float $mass;
 
     /**
-     * @ORM\Column(type="float", nullable=true)
-     */
-    private ?float $packaged_volume;
-
-    /**
      * @ORM\Column(type="integer", nullable=true)
      */
     private ?int $portion_size;
-
-    /**
-     * @ORM\Column(type="float", nullable=true)
-     */
-    private ?float $radius;
 
     /**
      * @ORM\Column(type="float", nullable=true)
@@ -121,27 +111,11 @@ class ItemType
     }
 
     /**
-     * @return float|null
-     */
-    public function getPackagedVolume(): ?float
-    {
-        return $this->packaged_volume;
-    }
-
-    /**
      * @return int|null
      */
     public function getPortionSize(): ?int
     {
         return $this->portion_size;
-    }
-
-    /**
-     * @return float|null
-     */
-    public function getRadius(): ?float
-    {
-        return $this->radius;
     }
 
     /**
