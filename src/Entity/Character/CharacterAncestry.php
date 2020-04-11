@@ -3,7 +3,6 @@ namespace Adam\Model\Entity\Character;
 
 use Adam\Model\Traits\DescriptionTrait;
 use Adam\Model\Traits\IdTrait;
-use Adam\Model\Traits\Item\ItemIconTrait;
 use Adam\Model\Traits\NameTrait;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -21,7 +20,6 @@ class CharacterAncestry
 {
     use IdTrait;
     use NameTrait;
-    use ItemIconTrait;
     use DescriptionTrait;
 
     /**
