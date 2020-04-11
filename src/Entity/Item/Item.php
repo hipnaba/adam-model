@@ -17,7 +17,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="type", type="string")
  * @ORM\DiscriminatorMap({
- *     "item" = "\Adam\Model\Entity\Item\Item"
+ *     "item" = "\Adam\Model\Entity\Item\Item",
+ *     "character" = "\Adam\Model\Entity\Character\Character"
  * })
  */
 class Item
