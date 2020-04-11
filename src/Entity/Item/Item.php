@@ -18,7 +18,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="class", type="string")
  */
-abstract class Item
+class Item
 {
     use IdTrait;
     use NameTrait;
