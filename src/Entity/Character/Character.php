@@ -55,6 +55,14 @@ class Character
     }
 
     /**
+     * @param DateTimeImmutable $lastSync
+     */
+    public function setLastSync(DateTimeImmutable $lastSync): void
+    {
+        $this->lastSync = $lastSync;
+    }
+
+    /**
      * @return Item|null
      */
     public function getLocation(): ?Item
