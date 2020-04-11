@@ -69,7 +69,7 @@ class Constellation extends Item
     /**
      * @return Constellation[]|Collection
      */
-    public function getAdjacentConstellations()
+    public function getAdjacentConstellations(): Collection
     {
         if (!isset($this->adjacentConstellations)) {
             $constellations = [];

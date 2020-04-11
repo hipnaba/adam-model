@@ -32,6 +32,11 @@ class Region extends Item
     private Collection $constellations;
 
     /**
+     * @var Region[]|Collection
+     */
+    private Collection $adjacentRegions;
+
+    /**
      * Region constructor.
      */
     public function __construct()
@@ -54,5 +59,30 @@ class Region extends Item
     public function getConstellations(): Collection
     {
         return $this->constellations;
+    }
+
+    /**
+     * @return Region[]|Collection
+     */
+    public function getAdjacentRegions(): Collection
+    {
+        if (!isset($this->adjacentRegions)) {
+            $regions = [];
+
+            foreach ($this->getConstellations() as $constellation) {
+                foreach ($constellation->getAdjacentConstellations() as $adjacentConstellation) {
+                    $adjacentRegion = $adjacentConstellation->getRegion();
+
+                    if ($adjacentRegion !== $this && !in_array($adjacentRegion, $regions, true)) {
+                        $regions[] = $adjacentRegion;
+                    }
+                }
+            }
+
+            usort($regions, fn (Region $a, Region $b) => $a->getName() < $b->getName() ? -1 : 1);
+            $this->adjacentRegions = new ArrayCollection($regions);
+        }
+
+        return $this->adjacentRegions;
     }
 }
