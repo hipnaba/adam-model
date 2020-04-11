@@ -14,20 +14,8 @@ use Doctrine\ORM\Tools\ToolsException;
  * @author Danijel Fabijan <hipnaba@gmail.com>
  * @link https://github.com/hipnaba/adam-model
  */
-final class ItemGroupRepositoryTest extends TestCase
+final class ItemGroupRepositoryTest
 {
-    /**
-     * @throws ToolsException
-     */
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $em = $this->getEntityManager();
-        $schemaTool = new SchemaTool($em);
-        $schemaTool->createSchema($em->getMetadataFactory()->getAllMetadata());
-    }
-
     private function getRepository(): ItemGroupRepository
     {
         return $this->getContainer()->get(ItemGroupRepository::class);
@@ -36,7 +24,7 @@ final class ItemGroupRepositoryTest extends TestCase
     /**
      * @throws DBALException
      */
-    public function testCanFindGroupsWithoutTypes()
+    public function CanFindGroupsWithoutTypes()
     {
         $conn = $this->getEntityManager()->getConnection();
         $conn->insert('item_category', ['id' => 0, 'name' => '#system', 'published' => 1]);

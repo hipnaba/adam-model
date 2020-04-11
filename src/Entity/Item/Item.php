@@ -18,7 +18,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\DiscriminatorColumn(name="type", type="string")
  * @ORM\DiscriminatorMap({
  *     "item" = "\Adam\Model\Entity\Item\Item",
- *     "character" = "\Adam\Model\Entity\Character\Character"
+ *     "character" = "\Adam\Model\Entity\Character\Character",
+ *     "agent" = "\Adam\Model\Entity\Agent\Agent"
  * })
  */
 class Item
