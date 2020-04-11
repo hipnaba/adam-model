@@ -1,7 +1,7 @@
 <?php
 namespace Adam\Model\Entity\Station;
 
-use Adam\Model\Entity\Celestial\SolarSystem;
+use Adam\Model\Entity\Celestial\System;
 use Adam\Model\Entity\Item\Item;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -18,10 +18,10 @@ use Doctrine\ORM\Mapping as ORM;
 class Station extends Item
 {
     /**
-     * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Celestial\SolarSystem", inversedBy="stations")
+     * @ORM\ManyToOne(targetEntity="System", inversedBy="stations")
      * @ORM\JoinColumn(name="solar_system_id", referencedColumnName="id")
      */
-    private SolarSystem $solar_system;
+    private System $solar_system;
 
     // TODO: owner
     // TODO: race
@@ -52,9 +52,9 @@ class Station extends Item
     private array $services;
 
     /**
-     * @return SolarSystem
+     * @return System
      */
-    public function getSolarSystem(): SolarSystem
+    public function getSolarSystem(): System
     {
         return $this->solar_system;
     }

@@ -17,12 +17,17 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="\Adam\Model\Repository\Celestial\SolarSystemRepository")
  * @ORM\Table(name="celestial_system")
  */
-class SolarSystem extends Item
+class System extends Item
 {
-    // TODO: constellation
     // TODO: planets
     // TODO: star
     // TODO: stargates
+
+    /**
+     * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Celestial\Constellation", inversedBy="systems")
+     * @ORM\JoinColumn(name="constellation_id", referencedColumnName="id", nullable=true)
+     */
+    private ?Constellation $constellation;
 
     /**
      * @ORM\OneToMany(targetEntity="\Adam\Model\Entity\Station\Station", mappedBy="system")
@@ -46,6 +51,14 @@ class SolarSystem extends Item
     {
         parent::__construct();
         $this->stations = new ArrayCollection();
+    }
+
+    /**
+     * @return Constellation|null
+     */
+    public function getConstellation(): ?Constellation
+    {
+        return $this->constellation;
     }
 
     /**

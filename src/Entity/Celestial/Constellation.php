@@ -3,6 +3,7 @@ namespace Adam\Model\Entity\Celestial;
 
 use Adam\Model\Entity\Character\Faction;
 use Adam\Model\Entity\Item\Item;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -30,6 +31,12 @@ class Constellation extends Item
     private Region $region;
 
     /**
+     * @ORM\OneToMany(targetEntity="\Adam\Model\Entity\Celestial\System", mappedBy="constellation")
+     * @ORM\OrderBy({"name" = "ASC"})
+     */
+    private Collection $systems;
+
+    /**
      * @return Faction|null
      */
     public function getFaction(): ?Faction
@@ -43,5 +50,13 @@ class Constellation extends Item
     public function getRegion(): Region
     {
         return $this->region;
+    }
+
+    /**
+     * @return System[]|Collection
+     */
+    public function getSystems(): Collection
+    {
+        return $this->systems;
     }
 }
