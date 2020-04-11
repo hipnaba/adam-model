@@ -26,12 +26,12 @@ class Item
      * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Item\ItemType", inversedBy="items")
      * @ORM\JoinColumn(name="type_id", referencedColumnName="id", nullable=true)
      */
-    protected ItemType $type;
+    protected ?ItemType $type;
 
     /**
-     * @return ItemType
+     * @return ItemType|null
      */
-    public function getType(): ItemType
+    public function getType(): ?ItemType
     {
         return $this->type;
     }
