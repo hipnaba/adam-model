@@ -27,6 +27,7 @@ class Region extends Item
 
     /**
      * @ORM\OneToMany(targetEntity="\Adam\Model\Entity\Celestial\Constellation", mappedBy="region")
+     * @ORM\OrderBy({"name" = "ASC"})
      */
     private Collection $constellations;
 
