@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @link https://github.com/hipnaba/adam-model
  *
  * @ORM\Entity()
- * @ORM\Table(name="character")
+ * @ORM\Table(name="`character`")
  */
 class Character extends Item
 {
