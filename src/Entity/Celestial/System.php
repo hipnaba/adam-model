@@ -91,7 +91,7 @@ class System extends Item
             foreach ($this->getStargates() as $stargate) {
                 $destinationSystem = $stargate->getDestination()->getSystem();
 
-                if (!in_array($destinationSystem, $systems)) {
+                if (!in_array($destinationSystem, $systems, true)) {
                     $systems[] = $destinationSystem;
                 }
             }

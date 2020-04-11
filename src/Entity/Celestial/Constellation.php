@@ -3,6 +3,7 @@ namespace Adam\Model\Entity\Celestial;
 
 use Adam\Model\Entity\Character\Faction;
 use Adam\Model\Entity\Item\Item;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -37,6 +38,11 @@ class Constellation extends Item
     private Collection $systems;
 
     /**
+     * @var Constellation[]|Collection
+     */
+    private Collection $adjacentConstellations;
+
+    /**
      * @return Faction|null
      */
     public function getFaction(): ?Faction
@@ -58,5 +64,30 @@ class Constellation extends Item
     public function getSystems(): Collection
     {
         return $this->systems;
+    }
+
+    /**
+     * @return Constellation[]|Collection
+     */
+    public function getAdjacentConstellations()
+    {
+        if (!isset($this->adjacentConstellations)) {
+            $constellations = [];
+
+            foreach ($this->getSystems() as $system) {
+                foreach ($system->getAdjacentSystems() as $adjacentSystem) {
+                    $adjacentConstellation = $adjacentSystem->getConstellation();
+
+                    if ($adjacentConstellation !== $this && !in_array($adjacentConstellation, $constellations, true)) {
+                        $constellations[] = $adjacentConstellation;
+                    }
+                }
+            }
+
+            usort($constellations, fn (Constellation $a, Constellation $b) => $a->getName() < $b->getName() ? -1 : 1);
+            $this->adjacentConstellations = new ArrayCollection($constellations);
+        }
+
+        return $this->adjacentConstellations;
     }
 }
