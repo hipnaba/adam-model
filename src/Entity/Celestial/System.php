@@ -25,9 +25,9 @@ class System extends Item
 
     /**
      * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Celestial\Constellation", inversedBy="systems")
-     * @ORM\JoinColumn(name="constellation_id", referencedColumnName="id", nullable=true)
+     * @ORM\JoinColumn(name="constellation_id", referencedColumnName="id")
      */
-    private ?Constellation $constellation;
+    private Constellation $constellation;
 
     /**
      * @ORM\OneToMany(targetEntity="\Adam\Model\Entity\Station\Station", mappedBy="system")
@@ -54,9 +54,17 @@ class System extends Item
     }
 
     /**
-     * @return Constellation|null
+     * @return Region
      */
-    public function getConstellation(): ?Constellation
+    public function getRegion(): Region
+    {
+        return $this->getConstellation()->getRegion();
+    }
+
+    /**
+     * @return Constellation
+     */
+    public function getConstellation(): Constellation
     {
         return $this->constellation;
     }
