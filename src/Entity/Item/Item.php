@@ -22,6 +22,7 @@ use Doctrine\ORM\Mapping as ORM;
  *     "character" = "\Adam\Model\Entity\Character\Character",
  *     "faction" = "\Adam\Model\Entity\Character\CharacterFaction",
  *     "agent" = "\Adam\Model\Entity\Agent\Agent",
+ *     "player" = "\Adam\Model\Entity\Character\PlayerCharacter"
  *     "celestial" = "\Adam\Model\Entity\Celestial\Celestial",
  *     "region" = "\Adam\Model\Entity\Celestial\Region",
  *     "constellation" = "\Adam\Model\Entity\Celestial\Constellation",
@@ -64,5 +65,13 @@ class Item
     public function getLocation(): ?Item
     {
         return $this->location;
+    }
+
+    /**
+     * @param Item|null $location
+     */
+    public function setLocation(?Item $location): void
+    {
+        $this->location = $location;
     }
 }

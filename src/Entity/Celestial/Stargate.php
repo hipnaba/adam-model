@@ -17,9 +17,9 @@ class Stargate extends Item
 {
     /**
      * @ORM\OneToOne(targetEntity="\Adam\Model\Entity\Celestial\Stargate", mappedBy="destination", inversedBy="destination")
-     * @ORM\JoinColumn(name="destination_id", referencedColumnName="id", nullable=true)
+     * @ORM\JoinColumn(name="destination_id", referencedColumnName="id", nullable=false)
      */
-    private ?Stargate $destination;
+    private Stargate $destination;
 
     /**
      * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Celestial\System", inversedBy="stargates")

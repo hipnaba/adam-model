@@ -31,12 +31,14 @@ class Planet extends Celestial
     /**
      * @ORM\OneToMany(targetEntity="\Adam\Model\Entity\Celestial\Moon", mappedBy="planet")
      * @ORM\OrderBy({"celestial_index" = "ASC"})
+     * @var Moon[]|Collection
      */
     private Collection $moons;
 
     /**
      * @ORM\OneToMany(targetEntity="\Adam\Model\Entity\Celestial\AsteroidBelt", mappedBy="planet")
      * @ORM\OrderBy({"celestial_index" = "ASC"})
+     * @var AsteroidBelt[]|Collection
      */
     private Collection $asteroid_belts;
 
@@ -74,7 +76,7 @@ class Planet extends Celestial
     }
 
     /**
-     * @return Collection
+     * @return AsteroidBelt[]|Collection
      */
     public function getAsteroidBelts(): Collection
     {
