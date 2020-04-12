@@ -3,7 +3,6 @@ namespace Adam\Model\Entity\Celestial;
 
 use Adam\Model\Entity\Character\CharacterFaction;
 use Adam\Model\Entity\Item\Item;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -14,12 +13,13 @@ use Doctrine\ORM\Mapping as ORM;
  * @author Danijel Fabijan <hipnaba@gmail.com>
  * @link https://github.com/hipnaba/adam-model
  *
+ * @ORM\Entity()
  * @ORM\Table(name="celestial_constellation")
  */
 class Constellation extends Item
 {
     /**
-     * @ORM\ManyToOne(targetEntity="CharacterFaction")
+     * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Character\CharacterFaction")
      * @ORM\JoinColumn(name="faction_id", referencedColumnName="id", nullable=true)
      */
     private ?CharacterFaction $faction;
@@ -34,12 +34,12 @@ class Constellation extends Item
      * @ORM\OneToMany(targetEntity="\Adam\Model\Entity\Celestial\System", mappedBy="constellation")
      * @ORM\OrderBy({"name" = "ASC"})
      */
-    private Collection $systems;
+    //private Collection $systems;
 
     /**
      * @var Constellation[]|Collection
      */
-    private Collection $adjacentConstellations;
+    //private Collection $adjacentConstellations;
 
     /**
      * @return CharacterFaction|null
@@ -60,15 +60,15 @@ class Constellation extends Item
     /**
      * @return System[]|Collection
      */
-    public function getSystems(): Collection
+    /*public function getSystems(): Collection
     {
         return $this->systems;
-    }
+    }*/
 
     /**
      * @return Constellation[]|Collection
      */
-    public function getAdjacentConstellations(): Collection
+    /*public function getAdjacentConstellations(): Collection
     {
         if (!isset($this->adjacentConstellations)) {
             $constellations = [];
@@ -88,5 +88,5 @@ class Constellation extends Item
         }
 
         return $this->adjacentConstellations;
-    }
+    }*/
 }

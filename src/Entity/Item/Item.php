@@ -23,7 +23,8 @@ use Doctrine\ORM\Mapping as ORM;
  *     "faction" = "\Adam\Model\Entity\Character\CharacterFaction",
  *     "agent" = "\Adam\Model\Entity\Agent\Agent",
  *     "celestial" = "\Adam\Model\Entity\Celestial\Celestial",
- *     "region" = "\Adam\Model\Entity\Celestial\Region"
+ *     "region" = "\Adam\Model\Entity\Celestial\Region",
+ *     "constellation" = "\Adam\Model\Entity\Celestial\Constellation"
  * })
  */
 class Item

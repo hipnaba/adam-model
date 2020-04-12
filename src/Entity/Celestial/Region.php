@@ -2,6 +2,7 @@
 namespace Adam\Model\Entity\Celestial;
 
 use Adam\Model\Entity\Character\CharacterFaction;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -27,7 +28,7 @@ class Region extends Celestial
      * @ORM\OneToMany(targetEntity="\Adam\Model\Entity\Celestial\Constellation", mappedBy="region")
      * @ORM\OrderBy({"name" = "ASC"})
      */
-    //private Collection $constellations;
+    private Collection $constellations;
 
     /**
      * @var Region[]|Collection
@@ -40,7 +41,7 @@ class Region extends Celestial
     public function __construct()
     {
         parent::__construct();
-        //$this->constellations = new ArrayCollection();
+        $this->constellations = new ArrayCollection();
     }
 
     /**
@@ -54,10 +55,10 @@ class Region extends Celestial
     /**
      * @return Constellation[]|Collection
      */
-    /*public function getConstellations(): Collection
+    public function getConstellations(): Collection
     {
         return $this->constellations;
-    }*/
+    }
 
     /**
      * @return Region[]|Collection
