@@ -46,7 +46,7 @@ class System extends Celestial
     /**
      * @ORM\OneToMany(targetEntity="\Adam\Model\Entity\Station\Station", mappedBy="system")
      */
-    //private Collection $stations;
+    private Collection $stations;
 
     /**
      * @ORM\Column(type="float")
@@ -71,7 +71,7 @@ class System extends Celestial
         parent::__construct();
         $this->planets = new ArrayCollection();
         $this->stargates = new ArrayCollection();
-        //$this->stations = new ArrayCollection();
+        $this->stations = new ArrayCollection();
     }
 
     /**
@@ -132,10 +132,10 @@ class System extends Celestial
     /**
      * @return Station[]|Collection
      */
-    /*public function getStations()
+    public function getStations()
     {
         return $this->stations;
-    }*/
+    }
 
     /**
      * @return float
