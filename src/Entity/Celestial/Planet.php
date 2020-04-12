@@ -1,6 +1,8 @@
 <?php
 namespace Adam\Model\Entity\Celestial;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -27,6 +29,21 @@ class Planet extends Celestial
     private int $celestial_index;
 
     /**
+     * @ORM\OneToMany(targetEntity="\Adam\Model\Entity\Celestial\Moon", mappedBy="planet")
+     * @ORM\OrderBy({"celestial_index" = "ASC"})
+     */
+    private Collection $moons;
+
+    /**
+     * Planet constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->moons = new ArrayCollection();
+    }
+
+    /**
      * @return System
      */
     public function getSystem(): System
@@ -40,5 +57,13 @@ class Planet extends Celestial
     public function getCelestialIndex(): int
     {
         return $this->celestial_index;
+    }
+
+    /**
+     * @return Moon[]|Collection
+     */
+    public function getMoons(): Collection
+    {
+        return $this->moons;
     }
 }
