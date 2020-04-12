@@ -22,10 +22,23 @@ class Moon extends Celestial
     private Planet $planet;
 
     /**
+     * @ORM\Column(type="integer")
+     */
+    private int $celestial_index;
+
+    /**
      * @return Planet
      */
     public function getPlanet(): Planet
     {
         return $this->planet;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCelestialIndex(): int
+    {
+        return $this->celestial_index;
     }
 }
