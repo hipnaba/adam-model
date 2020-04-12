@@ -16,7 +16,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity()
  * @ORM\Table(name="character_faction")
  */
-final class CharacterFaction extends Item
+class CharacterFaction extends Item
 {
     use CorporationTrait;
     use ItemIconTrait;
