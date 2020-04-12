@@ -21,7 +21,7 @@ class Star extends Celestial
     private System $system;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="bigint")
      */
     private int $age;
 
