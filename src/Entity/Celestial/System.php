@@ -33,13 +33,15 @@ class System extends Celestial
     /**
      * @ORM\OneToMany(targetEntity="\Adam\Model\Entity\Celestial\Planet", mappedBy="system")
      * @ORM\OrderBy({"celestial_index" = "ASC"})
+     * @var Planet[]|Collection
      */
     private Collection $planets;
 
     /**
      * @ORM\OneToMany(targetEntity="\Adam\Model\Entity\Celestial\Stargate", mappedBy="system")
+     * @var Stargate[]|Collection
      */
-    //private Collection $stargates;
+    private Collection $stargates;
 
     /**
      * @ORM\OneToMany(targetEntity="\Adam\Model\Entity\Station\Station", mappedBy="system")
@@ -59,7 +61,7 @@ class System extends Celestial
     /**
      * @var System[]|Collection
      */
-    //private Collection $adjacentSystems;
+    private Collection $adjacentSystems;
 
     /**
      * SolarSystem constructor.
@@ -68,8 +70,8 @@ class System extends Celestial
     {
         parent::__construct();
         $this->planets = new ArrayCollection();
-        /*$this->stargates = new ArrayCollection();
-        $this->stations = new ArrayCollection();*/
+        $this->stargates = new ArrayCollection();
+        //$this->stations = new ArrayCollection();
     }
 
     /**
@@ -99,12 +101,12 @@ class System extends Celestial
     /**
      * @return System[]|Collection
      */
-    /*public function getAdjacentSystems(): Collection
+    public function getAdjacentSystems(): Collection
     {
         if (!isset($this->adjacentSystems)) {
             $systems = [];
 
-            foreach ($this->getStargates() as $stargate) {
+            foreach ($this->stargates as $stargate) {
                 $destinationSystem = $stargate->getDestination()->getSystem();
 
                 if (!in_array($destinationSystem, $systems, true)) {
@@ -117,15 +119,15 @@ class System extends Celestial
         }
 
         return $this->adjacentSystems;
-    }*/
+    }
 
     /**
      * @return Stargate[]|Collection
      */
-    /*public function getStargates(): Collection
+    public function getStargates(): Collection
     {
         return $this->stargates;
-    }*/
+    }
 
     /**
      * @return Station[]|Collection

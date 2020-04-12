@@ -41,7 +41,7 @@ class Constellation extends Item
     /**
      * @var Constellation[]|Collection
      */
-    //private Collection $adjacentConstellations;
+    private Collection $adjacentConstellations;
 
     /**
      * Constellation constructor.
@@ -78,12 +78,12 @@ class Constellation extends Item
     /**
      * @return Constellation[]|Collection
      */
-    /*public function getAdjacentConstellations(): Collection
+    public function getAdjacentConstellations(): Collection
     {
         if (!isset($this->adjacentConstellations)) {
             $constellations = [];
 
-            foreach ($this->getSystems() as $system) {
+            foreach ($this->systems as $system) {
                 foreach ($system->getAdjacentSystems() as $adjacentSystem) {
                     $adjacentConstellation = $adjacentSystem->getConstellation();
 
@@ -98,5 +98,5 @@ class Constellation extends Item
         }
 
         return $this->adjacentConstellations;
-    }*/
+    }
 }

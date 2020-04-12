@@ -1,7 +1,6 @@
 <?php
 namespace Adam\Model\Entity\Celestial;
 
-use Adam\Model\Entity\Item\Item;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -11,9 +10,10 @@ use Doctrine\ORM\Mapping as ORM;
  * @author Danijel Fabijan <hipnaba@gmail.com>
  * @link https://github.com/hipnaba/adam-model
  *
+ * @ORM\Entity()
  * @ORM\Table(name="celestial_stargate")
  */
-class Stargate extends Item
+class Stargate extends Celestial
 {
     /**
      * @ORM\OneToOne(targetEntity="\Adam\Model\Entity\Celestial\Stargate", mappedBy="destination", inversedBy="destination")
@@ -33,14 +33,6 @@ class Stargate extends Item
     public function getDestination(): Stargate
     {
         return $this->destination;
-    }
-
-    /**
-     * @param Stargate $destination
-     */
-    public function setDestination(Stargate $destination): void
-    {
-        $this->destination = $destination;
     }
 
     /**

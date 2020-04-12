@@ -27,13 +27,14 @@ class Region extends Celestial
     /**
      * @ORM\OneToMany(targetEntity="\Adam\Model\Entity\Celestial\Constellation", mappedBy="region")
      * @ORM\OrderBy({"name" = "ASC"})
+     * @var Constellation[]|Collection
      */
     private Collection $constellations;
 
     /**
      * @var Region[]|Collection
      */
-    //private Collection $adjacentRegions;
+    private Collection $adjacentRegions;
 
     /**
      * Region constructor.
@@ -63,12 +64,12 @@ class Region extends Celestial
     /**
      * @return Region[]|Collection
      */
-    /*public function getAdjacentRegions(): Collection
+    public function getAdjacentRegions(): Collection
     {
         if (!isset($this->adjacentRegions)) {
             $regions = [];
 
-            foreach ($this->getConstellations() as $constellation) {
+            foreach ($this->constellations as $constellation) {
                 foreach ($constellation->getAdjacentConstellations() as $adjacentConstellation) {
                     $adjacentRegion = $adjacentConstellation->getRegion();
 
@@ -83,5 +84,5 @@ class Region extends Celestial
         }
 
         return $this->adjacentRegions;
-    }*/
+    }
 }
