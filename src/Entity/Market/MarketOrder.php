@@ -5,7 +5,6 @@ use Adam\Model\Entity\Celestial\Region;
 use Adam\Model\Entity\Item\Item;
 use Adam\Model\Entity\Item\ItemType;
 use Adam\Model\Entity\Station\Station;
-use Adam\Model\Traits\IdTrait;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -21,7 +20,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 abstract class MarketOrder
 {
-    use IdTrait;
+    /**
+     * @ORM\Id()
+     * @ORM\Column(type="bigint", options={"unsigned": true})
+     */
+    private int $id;
 
     /**
      * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Item\ItemType", inversedBy="market_orders")
@@ -167,5 +170,13 @@ abstract class MarketOrder
     public function getRegion(): Region
     {
         return $this->region;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
     }
 }
