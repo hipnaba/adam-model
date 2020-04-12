@@ -14,7 +14,7 @@ trait IdTrait
 {
     /**
      * @ORM\Id()
-     * @ORM\Column(type="integer", options={"unsigned": true})
+     * @ORM\Column(type="integer")
      */
     protected int $id;
 
