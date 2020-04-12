@@ -5,8 +5,8 @@ use Adam\Model\Entity\Celestial\System;
 use Adam\Model\Entity\Corporation\Corporation;
 use Adam\Model\Entity\Item\Item;
 use Adam\Model\Entity\Item\ItemPosition;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use phpDocumentor\Reflection\Types\Collection;
 
 /**
  * Class Station
