@@ -20,6 +20,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\DiscriminatorMap({
  *     "item" = "\Adam\Model\Entity\Item\Item",
  *     "character" = "\Adam\Model\Entity\Character\Character",
+ *     "faction" = "\Adam\Model\Entity\Character\CharacterFaction",
  *     "agent" = "\Adam\Model\Entity\Agent\Agent",
  *     "celestial" = "\Adam\Model\Entity\Celestial\Celestial"
  * })
