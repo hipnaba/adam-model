@@ -3,7 +3,6 @@ namespace Adam\Model\Entity\Agent;
 
 use Adam\Model\Entity\Character\Character;
 use Adam\Model\Entity\Corporation\CorporationDivision;
-use Adam\Model\Entity\Item\Item;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -23,12 +22,6 @@ class Agent extends Character
      * @ORM\JoinColumn(name="agent_type_id", referencedColumnName="id")
      */
     private AgentType $agent_type;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Item\Item")
-     * @ORM\JoinColumn(name="corporation_id", referencedColumnName="id")
-     */
-    private Item $corporation;
 
     /**
      * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Corporation\CorporationDivision")
@@ -57,14 +50,6 @@ class Agent extends Character
     public function getAgentType(): AgentType
     {
         return $this->agent_type;
-    }
-
-    /**
-     * @return Item
-     */
-    public function getCorporation(): Item
-    {
-        return $this->corporation;
     }
 
     /**
