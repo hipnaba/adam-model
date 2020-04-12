@@ -24,13 +24,13 @@ class CorporationInvestor
 
     /**
      * @ORM\ManyToOne(targetEntity="Corporation", inversedBy="investors")
-     * @ORM\JoinColumn(name="corporation_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="corporation_id", referencedColumnName="id", nullable=false)
      */
     private Corporation $corporation;
 
     /**
      * @ORM\ManyToOne(targetEntity="Corporation", inversedBy="investments")
-     * @ORM\JoinColumn(name="corporation_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="investor_id", referencedColumnName="id", nullable=false)
      */
     private Corporation $investor;
 
