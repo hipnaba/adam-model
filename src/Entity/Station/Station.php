@@ -6,6 +6,7 @@ use Adam\Model\Entity\Corporation\Corporation;
 use Adam\Model\Entity\Item\Item;
 use Adam\Model\Entity\Item\ItemPosition;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\Types\Collection;
 
 /**
  * Class Station
@@ -185,5 +186,13 @@ class Station extends Item
     public function getReprocessingHangarFlag(): int
     {
         return $this->reprocessing_hangar_flag;
+    }
+
+    /**
+     * @return StationService[]|Collection
+     */
+    public function getServices(): Collection
+    {
+        return $this->operation->getServices();
     }
 }

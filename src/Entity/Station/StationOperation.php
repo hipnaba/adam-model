@@ -6,6 +6,8 @@ use Adam\Model\Entity\Item\ItemType;
 use Adam\Model\Traits\DescriptionTrait;
 use Adam\Model\Traits\IdTrait;
 use Adam\Model\Traits\NameTrait;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -79,6 +81,23 @@ class StationOperation
      * @ORM\JoinColumn(name="jove_station_type_id", referencedColumnName="id", nullable=true)
      */
     private ?ItemType $jove_station_type;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="StationService")
+     * @ORM\JoinTable(name="station_operation_service",
+     *     joinColumns={@ORM\JoinColumn(name="operation_id", referencedColumnName="id")},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="service_id", referencedColumnName="id")})
+     * @var StationService[]|Collection
+     */
+    private Collection $services;
+
+    /**
+     * StationOperation constructor.
+     */
+    public function __construct()
+    {
+        $this->services = new ArrayCollection();
+    }
 
     /**
      * @return IndustryActivity
@@ -158,5 +177,13 @@ class StationOperation
     public function getJoveStationType(): ?ItemType
     {
         return $this->jove_station_type;
+    }
+
+    /**
+     * @return StationService[]|Collection
+     */
+    public function getServices(): Collection
+    {
+        return $this->services;
     }
 }
