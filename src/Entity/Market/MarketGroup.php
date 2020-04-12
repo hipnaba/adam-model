@@ -76,7 +76,7 @@ class MarketGroup
     /**
      * @return bool
      */
-    public function isHasTypes(): bool
+    public function hasTypes(): bool
     {
         return $this->has_types;
     }

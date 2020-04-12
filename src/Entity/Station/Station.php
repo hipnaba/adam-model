@@ -12,18 +12,18 @@ use Doctrine\ORM\Mapping as ORM;
  * @author Danijel Fabijan <hipnaba@gmail.com>
  * @link https://github.com/hipnaba/adam-model
  *
- * @ORM\Table(name="station_station")
+ * @ORM\Entity()
+ * @ORM\Table(name="station")
  */
 class Station extends Item
 {
+
+
     /**
      * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Celestial\System", inversedBy="stations")
      * @ORM\JoinColumn(name="solar_system_id", referencedColumnName="id")
      */
     private System $system;
-
-    // TODO: owner
-    // TODO: race
 
     /**
      * @ORM\Column(type="float")

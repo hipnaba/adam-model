@@ -43,7 +43,12 @@ class ItemType
      * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Market\MarketGroup", inversedBy="types")
      * @ORM\JoinColumn(name="market_group_id", referencedColumnName="id", nullable=true)
      */
-    private ?MarketGroup $marketGroup;
+    private ?MarketGroup $market_group;
+
+    /**
+     * @ORM\OneToMany(targetEntity="\Adam\Model\Entity\Market\MarketOrder", mappedBy="type")
+     */
+    private Collection $market_orders;
 
     /**
      * @ORM\Column(type="float", nullable=true)
@@ -131,6 +136,6 @@ class ItemType
      */
     public function getMarketGroup(): ?MarketGroup
     {
-        return $this->marketGroup;
+        return $this->market_group;
     }
 }
