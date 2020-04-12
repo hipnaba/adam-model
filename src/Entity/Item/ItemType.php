@@ -138,4 +138,12 @@ class ItemType
     {
         return $this->market_group;
     }
+
+    /**
+     * @return Collection
+     */
+    public function getMarketOrders(): Collection
+    {
+        return $this->market_orders;
+    }
 }

@@ -1,8 +1,10 @@
 <?php
 namespace Adam\Model\Entity\Market;
 
+use Adam\Model\Entity\Celestial\Region;
 use Adam\Model\Entity\Item\Item;
 use Adam\Model\Entity\Item\ItemType;
+use Adam\Model\Entity\Station\Station;
 use Adam\Model\Traits\IdTrait;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
@@ -28,6 +30,12 @@ abstract class MarketOrder
     private ItemType $type;
 
     /**
+     * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Celestial\Region")
+     * @ORM\JoinColumn(name="region_id", referencedColumnName="id", nullable=false)
+     */
+    private Region $region;
+
+    /**
      * @ORM\Column(type="boolean")
      */
     private bool $buy_order;
@@ -43,10 +51,10 @@ abstract class MarketOrder
     private int $duration;
 
     /**
-     * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Item\Item")
+     * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Station\Station")
      * @ORM\JoinColumn(name="location_id", referencedColumnName="id", nullable=false)
      */
-    private Item $location;
+    private Station $location;
 
     /**
      * @ORM\Column(type="integer")
@@ -151,5 +159,13 @@ abstract class MarketOrder
     public function getRange(): string
     {
         return $this->range;
+    }
+
+    /**
+     * @return Region
+     */
+    public function getRegion(): Region
+    {
+        return $this->region;
     }
 }
