@@ -46,9 +46,9 @@ class StationOperation
     private int $hub;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
-    private int $ratio;
+    private ?int $ratio;
 
     /**
      * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Item\ItemType")
