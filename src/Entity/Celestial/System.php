@@ -24,6 +24,12 @@ class System extends Celestial
     private Constellation $constellation;
 
     /**
+     * @ORM\OneToOne(targetEntity="\Adam\Model\Entity\Celestial\Star", inversedBy="system")
+     * @ORM\JoinColumn(name="star_id", referencedColumnName="id", nullable=true)
+     */
+    private ?Star $star;
+
+    /**
      * @ORM\OneToMany(targetEntity="\Adam\Model\Entity\Celestial\Planet", mappedBy="system")
      * @ORM\OrderBy({"celestial_index" = "ASC"})
      */
@@ -142,5 +148,13 @@ class System extends Celestial
     public function getSecurityClass(): ?string
     {
         return $this->security_class;
+    }
+
+    /**
+     * @return Star|null
+     */
+    public function getStar(): ?Star
+    {
+        return $this->star;
     }
 }
