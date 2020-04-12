@@ -23,10 +23,23 @@ class Celestial extends Item
     private ItemPosition $position;
 
     /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private ?float $radius;
+
+    /**
      * Celestial constructor.
      */
     public function __construct()
     {
         $this->position = new ItemPosition(0, 0, 0);
+    }
+
+    /**
+     * @return float|null
+     */
+    public function getRadius(): ?float
+    {
+        return $this->radius;
     }
 }
