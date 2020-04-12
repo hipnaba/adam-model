@@ -1,7 +1,6 @@
 <?php
 namespace Adam\Model\Entity\Character;
 
-use Adam\Model\Entity\Celestial\Celestial;
 use Adam\Model\Entity\Item\Item;
 use Adam\Model\Traits\CorporationTrait;
 use Adam\Model\Traits\Item\ItemIconTrait;
@@ -29,10 +28,10 @@ final class CharacterFaction extends Item
     private CharacterRace $race;
 
     /**
-     * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Celestial\Celestial")
+     * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Item\Item")
      * @ORM\JoinColumn(name="system_id", referencedColumnName="id", nullable=false)
      */
-    private Celestial $system;
+    private Item $system;
 
     /**
      * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Item\Item")
@@ -64,9 +63,9 @@ final class CharacterFaction extends Item
     }
 
     /**
-     * @return Celestial
+     * @return Item
      */
-    public function getSystem(): Celestial
+    public function getSystem(): Item
     {
         return $this->system;
     }
