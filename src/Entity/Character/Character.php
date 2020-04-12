@@ -21,34 +21,34 @@ class Character extends Item
      * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Character\CharacterAncestry")
      * @ORM\JoinColumn(name="ancestry_id", referencedColumnName="id", nullable=true)
      */
-    private ?CharacterAncestry $ancestry;
+    protected ?CharacterAncestry $ancestry;
 
     /**
      * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Character\CharacterBloodline")
      * @ORM\JoinColumn(name="bloodline_id", referencedColumnName="id", nullable=false)
      */
-    private CharacterBloodline $bloodline;
+    protected CharacterBloodline $bloodline;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private DateTime $birthday;
+    protected DateTime $birthday;
 
     /**
      * @ORM\Column(type="string")
      */
-    private string $gender;
+    protected string $gender;
 
     /**
      * @ORM\Column(type="float")
      */
-    private float $security_status;
+    protected float $security_status;
 
     /**
      * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Item\Item")
      * @ORM\JoinColumn(name="corporation_id", referencedColumnName="id", nullable=false)
      */
-    private Item $corporation;
+    protected Item $corporation;
 
     /**
      * @return CharacterAncestry
