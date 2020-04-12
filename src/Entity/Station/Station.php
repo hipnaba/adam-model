@@ -2,7 +2,9 @@
 namespace Adam\Model\Entity\Station;
 
 use Adam\Model\Entity\Celestial\System;
+use Adam\Model\Entity\Corporation\Corporation;
 use Adam\Model\Entity\Item\Item;
+use Adam\Model\Entity\Item\ItemPosition;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -17,13 +19,44 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Station extends Item
 {
-
-
     /**
      * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Celestial\System", inversedBy="stations")
      * @ORM\JoinColumn(name="solar_system_id", referencedColumnName="id")
      */
     private System $system;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="StationOperation")
+     * @ORM\JoinColumn(name="operation_id", referencedColumnName="id", nullable=false)
+     */
+    private StationOperation $operation;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="StationType")
+     * @ORM\JoinColumn(name="station_type_id", referencedColumnName="id", nullable=false)
+     */
+    private StationType $station_type;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Corporation\Corporation")
+     * @ORM\JoinColumn(name="owner_id", referencedColumnName="id", nullable=false)
+     */
+    private Corporation $owner;
+
+    /**
+     * @ORM\Column(type="object")
+     */
+    private ItemPosition $position;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private float $security;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private bool $docking_cost_per_volume;
 
     /**
      * @ORM\Column(type="float")
@@ -46,9 +79,17 @@ class Station extends Item
     private float $reprocessing_stations_take;
 
     /**
-     * @ORM\Column(type="array")
+     * @ORM\Column(type="integer")
      */
-    private array $services;
+    private int $reprocessing_hangar_flag;
+
+    /**
+     * Station constructor.
+     */
+    public function __construct()
+    {
+        $this->position = new ItemPosition();
+    }
 
     /**
      * @return System
@@ -91,10 +132,58 @@ class Station extends Item
     }
 
     /**
-     * @return array
+     * @return StationOperation
      */
-    public function getServices(): array
+    public function getOperation(): StationOperation
     {
-        return $this->services;
+        return $this->operation;
+    }
+
+    /**
+     * @return StationType
+     */
+    public function getStationType(): StationType
+    {
+        return $this->station_type;
+    }
+
+    /**
+     * @return Corporation
+     */
+    public function getOwner(): Corporation
+    {
+        return $this->owner;
+    }
+
+    /**
+     * @return ItemPosition
+     */
+    public function getPosition(): ItemPosition
+    {
+        return $this->position;
+    }
+
+    /**
+     * @return float
+     */
+    public function getSecurity(): float
+    {
+        return $this->security;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isDockingCostPerVolume(): bool
+    {
+        return $this->docking_cost_per_volume;
+    }
+
+    /**
+     * @return int
+     */
+    public function getReprocessingHangarFlag(): int
+    {
+        return $this->reprocessing_hangar_flag;
     }
 }
