@@ -1,7 +1,6 @@
 <?php
 namespace Adam\Model\Entity\Celestial;
 
-use Adam\Model\Entity\Item\Item;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -11,9 +10,10 @@ use Doctrine\ORM\Mapping as ORM;
  * @author Danijel Fabijan <hipnaba@gmail.com>
  * @link https://github.com/hipnaba/adam-model
  *
+ * @ORM\Entity()
  * @ORM\Table(name="celestial_planet")
  */
-class Planet extends Item
+class Planet extends Celestial
 {
     /**
      * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Celestial\System", inversedBy="planets")

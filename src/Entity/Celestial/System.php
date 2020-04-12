@@ -2,6 +2,7 @@
 namespace Adam\Model\Entity\Celestial;
 
 use Adam\Model\Entity\Station\Station;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -33,7 +34,7 @@ class System extends Celestial
      * @ORM\OneToMany(targetEntity="\Adam\Model\Entity\Celestial\Planet", mappedBy="system")
      * @ORM\OrderBy({"celestial_index" = "ASC"})
      */
-    //private Collection $planets;
+    private Collection $planets;
 
     /**
      * @ORM\OneToMany(targetEntity="\Adam\Model\Entity\Celestial\Stargate", mappedBy="system")
@@ -66,8 +67,8 @@ class System extends Celestial
     public function __construct()
     {
         parent::__construct();
-        /*$this->planets = new ArrayCollection();
-        $this->stargates = new ArrayCollection();
+        $this->planets = new ArrayCollection();
+        /*$this->stargates = new ArrayCollection();
         $this->stations = new ArrayCollection();*/
     }
 
@@ -90,10 +91,10 @@ class System extends Celestial
     /**
      * @return Planet[]|Collection
      */
-    /*public function getPlanets()
+    public function getPlanets()
     {
         return $this->planets;
-    }*/
+    }
 
     /**
      * @return System[]|Collection

@@ -26,7 +26,8 @@ use Doctrine\ORM\Mapping as ORM;
  *     "region" = "\Adam\Model\Entity\Celestial\Region",
  *     "constellation" = "\Adam\Model\Entity\Celestial\Constellation",
  *     "system": "\Adam\Model\Entity\Celestial\System",
- *     "star": "\Adam\Model\Entity\Celestial\Star"
+ *     "star": "\Adam\Model\Entity\Celestial\Star",
+ *     "planet": "\Adam\Model\Entity\Celestial\Planet"
  * })
  */
 class Item
