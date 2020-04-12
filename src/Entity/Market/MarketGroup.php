@@ -44,7 +44,7 @@ class MarketGroup
     private bool $has_types;
 
     /**
-     * @ORM\OneToMany(targetEntity="\Adam\Model\Entity\Item\ItemType", mappedBy="marketGroup")
+     * @ORM\OneToMany(targetEntity="\Adam\Model\Entity\Item\ItemType", mappedBy="market_group")
      */
     private Collection $types;
 
