@@ -2,7 +2,7 @@
 namespace Adam\Model\Entity\Character;
 
 use Adam\Model\Entity\Item\Item;
-use DateTimeImmutable;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -30,9 +30,9 @@ class Character extends Item
     private CharacterBloodline $bloodline;
 
     /**
-     * @ORM\Column(type="datetimetz_immutable")
+     * @ORM\Column(type="datetime")
      */
-    private DateTimeImmutable $birthday;
+    private DateTime $birthday;
 
     /**
      * @ORM\Column(type="string")
@@ -59,9 +59,9 @@ class Character extends Item
     }
 
     /**
-     * @return DateTimeImmutable
+     * @return DateTime
      */
-    public function getBirthday(): DateTimeImmutable
+    public function getBirthday(): DateTime
     {
         return $this->birthday;
     }
