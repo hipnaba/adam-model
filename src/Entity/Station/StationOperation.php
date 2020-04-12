@@ -52,33 +52,33 @@ class StationOperation
 
     /**
      * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Item\ItemType")
-     * @ORM\JoinColumn(name="caldari_station_type_id", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(name="caldari_station_type_id", referencedColumnName="id", nullable=true)
      */
-    private ItemType $caldari_station_type;
+    private ?ItemType $caldari_station_type;
 
     /**
      * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Item\ItemType")
-     * @ORM\JoinColumn(name="minmatar_station_type_id", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(name="minmatar_station_type_id", referencedColumnName="id", nullable=true)
      */
-    private ItemType $minmatar_station_type;
+    private ?ItemType $minmatar_station_type;
 
     /**
      * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Item\ItemType")
-     * @ORM\JoinColumn(name="amarr_station_type_id", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(name="amarr_station_type_id", referencedColumnName="id", nullable=true)
      */
-    private ItemType $amarr_station_type;
+    private ?ItemType $amarr_station_type;
 
     /**
      * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Item\ItemType")
-     * @ORM\JoinColumn(name="gallente_station_type_id", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(name="gallente_station_type_id", referencedColumnName="id", nullable=true)
      */
-    private ItemType $gallente_station_type;
+    private ?ItemType $gallente_station_type;
 
     /**
      * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Item\ItemType")
-     * @ORM\JoinColumn(name="jove_station_type_id", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(name="jove_station_type_id", referencedColumnName="id", nullable=true)
      */
-    private ItemType $jove_station_type;
+    private ?ItemType $jove_station_type;
 
     /**
      * @return IndustryActivity
@@ -121,41 +121,41 @@ class StationOperation
     }
 
     /**
-     * @return ItemType
+     * @return ItemType|null
      */
-    public function getCaldariStationType(): ItemType
+    public function getCaldariStationType(): ?ItemType
     {
         return $this->caldari_station_type;
     }
 
     /**
-     * @return ItemType
+     * @return ItemType|null
      */
-    public function getMinmatarStationType(): ItemType
+    public function getMinmatarStationType(): ?ItemType
     {
         return $this->minmatar_station_type;
     }
 
     /**
-     * @return ItemType
+     * @return ItemType|null
      */
-    public function getAmarrStationType(): ItemType
+    public function getAmarrStationType(): ?ItemType
     {
         return $this->amarr_station_type;
     }
 
     /**
-     * @return ItemType
+     * @return ItemType|null
      */
-    public function getGallenteStationType(): ItemType
+    public function getGallenteStationType(): ?ItemType
     {
         return $this->gallente_station_type;
     }
 
     /**
-     * @return ItemType
+     * @return ItemType|null
      */
-    public function getJoveStationType(): ItemType
+    public function getJoveStationType(): ?ItemType
     {
         return $this->jove_station_type;
     }
