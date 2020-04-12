@@ -17,7 +17,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity()
  * @ORM\Table(name="industry_activity")
  */
-class Activity
+class IndustryActivity
 {
     use IdTrait;
     use NameTrait;
