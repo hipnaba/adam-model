@@ -3,6 +3,7 @@ namespace Adam\Model\Entity\Celestial;
 
 use Adam\Model\Entity\Character\CharacterFaction;
 use Adam\Model\Entity\Item\Item;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -33,13 +34,22 @@ class Constellation extends Item
     /**
      * @ORM\OneToMany(targetEntity="\Adam\Model\Entity\Celestial\System", mappedBy="constellation")
      * @ORM\OrderBy({"name" = "ASC"})
+     * @var System[]|Collection
      */
-    //private Collection $systems;
+    private Collection $systems;
 
     /**
      * @var Constellation[]|Collection
      */
     //private Collection $adjacentConstellations;
+
+    /**
+     * Constellation constructor.
+     */
+    public function __construct()
+    {
+        $this->systems = new ArrayCollection();
+    }
 
     /**
      * @return CharacterFaction|null
@@ -60,10 +70,10 @@ class Constellation extends Item
     /**
      * @return System[]|Collection
      */
-    /*public function getSystems(): Collection
+    public function getSystems(): Collection
     {
         return $this->systems;
-    }*/
+    }
 
     /**
      * @return Constellation[]|Collection

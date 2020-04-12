@@ -1,9 +1,7 @@
 <?php
 namespace Adam\Model\Entity\Celestial;
 
-use Adam\Model\Entity\Item\Item;
 use Adam\Model\Entity\Station\Station;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -14,12 +12,11 @@ use Doctrine\ORM\Mapping as ORM;
  * @author Danijel Fabijan <hipnaba@gmail.com>
  * @link https://github.com/hipnaba/adam-model
  *
+ * @ORM\Entity()
  * @ORM\Table(name="celestial_system")
  */
-class System extends Item
+class System extends Celestial
 {
-    // TODO: star
-
     /**
      * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Celestial\Constellation", inversedBy="systems")
      * @ORM\JoinColumn(name="constellation_id", referencedColumnName="id")
@@ -30,17 +27,17 @@ class System extends Item
      * @ORM\OneToMany(targetEntity="\Adam\Model\Entity\Celestial\Planet", mappedBy="system")
      * @ORM\OrderBy({"celestial_index" = "ASC"})
      */
-    private Collection $planets;
+    //private Collection $planets;
 
     /**
      * @ORM\OneToMany(targetEntity="\Adam\Model\Entity\Celestial\Stargate", mappedBy="system")
      */
-    private Collection $stargates;
+    //private Collection $stargates;
 
     /**
      * @ORM\OneToMany(targetEntity="\Adam\Model\Entity\Station\Station", mappedBy="system")
      */
-    private Collection $stations;
+    //private Collection $stations;
 
     /**
      * @ORM\Column(type="float")
@@ -55,7 +52,7 @@ class System extends Item
     /**
      * @var System[]|Collection
      */
-    private Collection $adjacentSystems;
+    //private Collection $adjacentSystems;
 
     /**
      * SolarSystem constructor.
@@ -63,9 +60,9 @@ class System extends Item
     public function __construct()
     {
         parent::__construct();
-        $this->planets = new ArrayCollection();
+        /*$this->planets = new ArrayCollection();
         $this->stargates = new ArrayCollection();
-        $this->stations = new ArrayCollection();
+        $this->stations = new ArrayCollection();*/
     }
 
     /**
@@ -73,7 +70,7 @@ class System extends Item
      */
     public function getRegion(): Region
     {
-        return $this->getConstellation()->getRegion();
+        return $this->constellation->getRegion();
     }
 
     /**
@@ -87,15 +84,15 @@ class System extends Item
     /**
      * @return Planet[]|Collection
      */
-    public function getPlanets()
+    /*public function getPlanets()
     {
         return $this->planets;
-    }
+    }*/
 
     /**
      * @return System[]|Collection
      */
-    public function getAdjacentSystems(): Collection
+    /*public function getAdjacentSystems(): Collection
     {
         if (!isset($this->adjacentSystems)) {
             $systems = [];
@@ -113,23 +110,23 @@ class System extends Item
         }
 
         return $this->adjacentSystems;
-    }
+    }*/
 
     /**
      * @return Stargate[]|Collection
      */
-    public function getStargates(): Collection
+    /*public function getStargates(): Collection
     {
         return $this->stargates;
-    }
+    }*/
 
     /**
      * @return Station[]|Collection
      */
-    public function getStations()
+    /*public function getStations()
     {
         return $this->stations;
-    }
+    }*/
 
     /**
      * @return float
