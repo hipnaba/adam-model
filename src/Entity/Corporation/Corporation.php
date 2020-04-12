@@ -70,9 +70,9 @@ class Corporation extends Item
     private Collection $investments;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
-    private int $public_shares;
+    private ?int $public_shares;
 
     /**
      * @ORM\Column(type="float")
