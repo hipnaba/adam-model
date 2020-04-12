@@ -14,7 +14,6 @@ use Doctrine\ORM\Mapping as ORM;
  * @author Danijel Fabijan <hipnaba@gmail.com>
  * @link https://github.com/hipnaba/adam-model
  *
- * @ORM\Entity(repositoryClass="\Adam\Model\Repository\Celestial\SolarSystemRepository")
  * @ORM\Table(name="celestial_system")
  */
 class System extends Item

@@ -12,7 +12,6 @@ use Doctrine\ORM\Mapping as ORM;
  * @author Danijel Fabijan <hipnaba@gmail.com>
  * @link https://github.com/hipnaba/adam-model
  *
- * @ORM\Entity(repositoryClass="\Adam\Model\Repository\Station\StationRepository")
  * @ORM\Table(name="station_station")
  */
 class Station extends Item

@@ -1,6 +1,7 @@
 <?php
 namespace Adam\Model\Entity\Item;
 
+use Adam\Model\Traits\DescriptionTrait;
 use Adam\Model\Traits\IdTrait;
 use Adam\Model\Traits\NameTrait;
 use Doctrine\ORM\Mapping as ORM;
@@ -19,13 +20,15 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\DiscriminatorMap({
  *     "item" = "\Adam\Model\Entity\Item\Item",
  *     "character" = "\Adam\Model\Entity\Character\Character",
- *     "agent" = "\Adam\Model\Entity\Agent\Agent"
+ *     "agent" = "\Adam\Model\Entity\Agent\Agent",
+ *     "celestial" = "\Adam\Model\Entity\Celestial\Celestial"
  * })
  */
 class Item
 {
     use IdTrait;
     use NameTrait;
+    use DescriptionTrait;
 
     /**
      * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Item\ItemType", inversedBy="items")

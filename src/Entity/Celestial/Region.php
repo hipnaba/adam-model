@@ -1,7 +1,6 @@
 <?php
 namespace Adam\Model\Entity\Celestial;
 
-use Adam\Model\Entity\Character\Faction;
 use Adam\Model\Entity\Item\Item;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -14,17 +13,10 @@ use Doctrine\ORM\Mapping as ORM;
  * @author Danijel Fabijan <hipnaba@gmail.com>
  * @link https://github.com/hipnaba/adam-model
  *
- * @ORM\Entity()
  * @ORM\Table(name="celestial_region")
  */
 class Region extends Item
 {
-    /**
-     * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Character\Faction")
-     * @ORM\JoinColumn(name="faction_id", referencedColumnName="id", nullable=true)
-     */
-    private ?Faction $faction;
-
     /**
      * @ORM\OneToMany(targetEntity="\Adam\Model\Entity\Celestial\Constellation", mappedBy="region")
      * @ORM\OrderBy({"name" = "ASC"})
@@ -43,14 +35,6 @@ class Region extends Item
     {
         parent::__construct();
         $this->constellations = new ArrayCollection();
-    }
-
-    /**
-     * @return Faction|null
-     */
-    public function getFaction(): ?Faction
-    {
-        return $this->faction;
     }
 
     /**
