@@ -4,7 +4,6 @@ namespace Adam\Model\Entity\Market;
 use Adam\Model\Entity\Celestial\Region;
 use Adam\Model\Entity\Item\Item;
 use Adam\Model\Entity\Item\ItemType;
-use Adam\Model\Entity\Station\Station;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -18,7 +17,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity()
  * @ORM\Table(name="market_order")
  */
-abstract class MarketOrder
+class MarketOrder
 {
     /**
      * @ORM\Id()
@@ -54,10 +53,10 @@ abstract class MarketOrder
     private int $duration;
 
     /**
-     * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Station\Station")
+     * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Item\Item")
      * @ORM\JoinColumn(name="location_id", referencedColumnName="id", nullable=false)
      */
-    private Station $location;
+    private Item $location;
 
     /**
      * @ORM\Column(type="integer")
