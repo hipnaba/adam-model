@@ -2,6 +2,7 @@
 namespace Adam\Model\Entity\Item;
 
 use Adam\Model\Entity\Market\MarketGroup;
+use Adam\Model\Traits\DescriptionTrait;
 use Adam\Model\Traits\IdTrait;
 use Adam\Model\Traits\Item\ItemIconTrait;
 use Adam\Model\Traits\NameTrait;
@@ -26,6 +27,7 @@ class ItemType
     use NameTrait;
     use ItemIconTrait;
     use PublishedTrait;
+    use DescriptionTrait;
 
     /**
      * @ORM\OneToMany(targetEntity="\Adam\Model\Entity\Item\Item", mappedBy="type")
