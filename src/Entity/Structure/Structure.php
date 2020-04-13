@@ -21,9 +21,9 @@ class Structure extends Item
 {
     /**
      * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Corporation\Corporation")
-     * @ORM\JoinColumn(name="owner_id", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(name="owner_id", referencedColumnName="id", nullable=true)
      */
-    private PlayerCorporation $owner;
+    private ?PlayerCorporation $owner;
 
     /**
      * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Celestial\System")
