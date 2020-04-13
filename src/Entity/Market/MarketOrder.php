@@ -54,9 +54,9 @@ class MarketOrder
 
     /**
      * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Item\Item")
-     * @ORM\JoinColumn(name="location_id", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(name="location_id", referencedColumnName="id", nullable=true)
      */
-    private Item $location;
+    private ?Item $location;
 
     /**
      * @ORM\Column(type="integer")
