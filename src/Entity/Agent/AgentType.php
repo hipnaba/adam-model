@@ -17,7 +17,7 @@ class AgentType
 {
     /**
      * @ORM\Id()
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="bigint", options={"unsigned": true})
      */
     private int $id;
 
