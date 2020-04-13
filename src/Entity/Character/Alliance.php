@@ -1,9 +1,9 @@
 <?php
 namespace Adam\Model\Entity\Character;
 
-use Adam\Model\Traits\IdTrait;
-use Adam\Model\Traits\NameTrait;
-use DateTimeImmutable;
+use Adam\Model\Entity\Corporation\PlayerCorporation;
+use Adam\Model\Entity\Item\Item;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -13,12 +13,28 @@ use Doctrine\ORM\Mapping as ORM;
  * @author Danijel Fabijan <hipnaba@gmail.com>
  * @link https://github.com/hipnaba/adam-model
  *
+ * @ORM\Entity()
  * @ORM\Table(name="character_alliance")
  */
-class Alliance
+class Alliance extends Item
 {
-    use IdTrait;
-    use NameTrait;
+    /**
+     * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Corporation\PlayerCorporation")
+     * @ORM\JoinColumn(name="creator_corporation_id", referencedColumnName="id", nullable=false)
+     */
+    private PlayerCorporation $creator_corporation;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="PlayerCharacter")
+     * @ORM\JoinColumn(name="creator_id", referencedColumnName="id", nullable=false)
+     */
+    private PlayerCharacter $creator;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Corporation\PlayerCorporation")
+     * @ORM\JoinColumn(name="executor_id", referencedColumnName="id", nullable=false)
+     */
+    private PlayerCorporation $executor;
 
     /**
      * @ORM\Column(type="string", unique=true)
@@ -26,29 +42,33 @@ class Alliance
     private string $ticker;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="datetime")
      */
-    private int $creator_id;
+    private DateTime $date_founded;
 
     /**
-     * @ORM\Column(type="integer")
+     * @return PlayerCorporation
      */
-    private int $creator_corporation_id;
+    public function getCreatorCorporation(): PlayerCorporation
+    {
+        return $this->creator_corporation;
+    }
 
     /**
-     * @ORM\Column(type="integer")
+     * @return PlayerCharacter
      */
-    private ?int $executor_corporation_id;
+    public function getCreator(): PlayerCharacter
+    {
+        return $this->creator;
+    }
 
     /**
-     * @ORM\Column(type="datetimetz_immutable")
+     * @return PlayerCorporation
      */
-    private DateTimeImmutable $date_founded;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private ?int $faction_id;
+    public function getExecutor(): PlayerCorporation
+    {
+        return $this->executor;
+    }
 
     /**
      * @return string
@@ -59,42 +79,10 @@ class Alliance
     }
 
     /**
-     * @return int
+     * @return DateTime
      */
-    public function getCreatorId(): int
-    {
-        return $this->creator_id;
-    }
-
-    /**
-     * @return int
-     */
-    public function getCreatorCorporationId(): int
-    {
-        return $this->creator_corporation_id;
-    }
-
-    /**
-     * @return int|null
-     */
-    public function getExecutorCorporationId(): ?int
-    {
-        return $this->executor_corporation_id;
-    }
-
-    /**
-     * @return DateTimeImmutable
-     */
-    public function getDateFounded(): DateTimeImmutable
+    public function getDateFounded(): DateTime
     {
         return $this->date_founded;
-    }
-
-    /**
-     * @return int|null
-     */
-    public function getFactionId(): ?int
-    {
-        return $this->faction_id;
     }
 }

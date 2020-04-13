@@ -33,7 +33,10 @@ use Doctrine\ORM\Mapping as ORM;
  *     "asteroid_belt" = "\Adam\Model\Entity\Celestial\AsteroidBelt",
  *     "stargate" = "\Adam\Model\Entity\Celestial\Stargate",
  *     "station" = "\Adam\Model\Entity\Station\Station",
- *     "corporation" = "\Adam\Model\Entity\Corporation\Corporation"
+ *     "corporation" = "\Adam\Model\Entity\Corporation\Corporation",
+ *     "alliance" = "\Adam\Model\Entity\Character\Alliance",
+ *     "player_corporation" = "\Adam\Model\Entity\Corporation\PlayerCorporation",
+ *     "structure" = "\Adam\Model\Entity\Structure\Structure"
  * })
  */
 class Item
