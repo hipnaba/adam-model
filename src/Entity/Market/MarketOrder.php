@@ -100,6 +100,14 @@ class MarketOrder
     }
 
     /**
+     * @return bool
+     */
+    public function isSellOrder(): bool
+    {
+        return !$this->buy_order;
+    }
+
+    /**
      * @return DateTime
      */
     public function getIssuedAt(): DateTime

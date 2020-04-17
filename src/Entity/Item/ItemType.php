@@ -2,6 +2,7 @@
 namespace Adam\Model\Entity\Item;
 
 use Adam\Model\Entity\Market\MarketGroup;
+use Adam\Model\Entity\Market\MarketOrder;
 use Adam\Model\Traits\DescriptionTrait;
 use Adam\Model\Traits\IdTrait;
 use Adam\Model\Traits\Item\ItemIconTrait;
@@ -49,6 +50,7 @@ class ItemType
 
     /**
      * @ORM\OneToMany(targetEntity="\Adam\Model\Entity\Market\MarketOrder", mappedBy="type")
+     * @var MarketOrder[]|Collection
      */
     private Collection $market_orders;
 
@@ -83,6 +85,7 @@ class ItemType
     public function __construct()
     {
         $this->items = new ArrayCollection();
+        $this->market_orders = new ArrayCollection();
     }
 
     /**
@@ -147,5 +150,39 @@ class ItemType
     public function getMarketOrders(): Collection
     {
         return $this->market_orders;
+    }
+
+    /**
+     * @return float|null
+     */
+    public function getLowestSellOrder(): ?float
+    {
+        /** @var float|null $lowest */
+        $lowest = null;
+
+        foreach ($this->market_orders as $market_order) {
+            if ($market_order->isSellOrder()) {
+                $lowest = min($lowest, $market_order->getPrice());
+            }
+        }
+
+        return $lowest ?: null;
+    }
+
+    /**
+     * @return float|null
+     */
+    public function getHighestBuyOrder(): ?float
+    {
+        /** @var float|null $highest */
+        $highest = null;
+
+        foreach ($this->market_orders as $market_order) {
+            if ($market_order->isBuyOrder()) {
+                $highest = max($highest, $market_order->getPrice());
+            }
+        }
+
+        return $highest ?: null;
     }
 }
