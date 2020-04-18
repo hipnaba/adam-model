@@ -33,9 +33,9 @@ class Attribute
     private float $default_value;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
-    private string $display_name;
+    private ?string $display_name;
 
     /**
      * @ORM\ManyToOne(targetEntity="\Adam\Model\Entity\Item\Unit")
@@ -72,7 +72,7 @@ class Attribute
      */
     public function getDisplayName(): string
     {
-        return $this->display_name;
+        return $this->display_name ?? '';
     }
 
     /**
