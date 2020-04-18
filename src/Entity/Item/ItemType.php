@@ -8,6 +8,7 @@ use Adam\Model\Traits\IdTrait;
 use Adam\Model\Traits\Item\ItemIconTrait;
 use Adam\Model\Traits\NameTrait;
 use Adam\Model\Traits\PublishedTrait;
+use Adam\Model\Traits\SyncableTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -29,6 +30,7 @@ class ItemType
     use ItemIconTrait;
     use PublishedTrait;
     use DescriptionTrait;
+    use SyncableTrait;
 
     /**
      * @ORM\OneToMany(targetEntity="\Adam\Model\Entity\Item\Item", mappedBy="type")
