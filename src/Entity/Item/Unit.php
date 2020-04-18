@@ -25,13 +25,13 @@ class Unit
     /**
      * @ORM\Column(type="string")
      */
-    private string $displayName;
+    private string $display_name;
 
     /**
      * @return string
      */
     public function getDisplayName(): string
     {
-        return $this->displayName;
+        return $this->display_name;
     }
 }
