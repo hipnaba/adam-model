@@ -12,7 +12,6 @@ use Adam\Model\Traits\SyncableTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use MongoDB\BSON\Type;
 
 /**
  * Class Type
@@ -28,6 +27,14 @@ class ItemType
 {
     private const ATTRIBUTE_COMPRESS_TO = 1940;
     private const ATTRIBUTE_COMPRESS_PORTION = 1941;
+    private const ATTRIBUTE_ORE_TYPE = 2699;
+
+    private const ORE_TYPE_MISSION = 0;
+    private const ORE_TYPE_STANDARD = 1;
+    private const ORE_TYPE_PLUS_5 = 2;
+    private const ORE_TYPE_PLUS_10 = 3;
+    private const ORE_TYPE_HIGH_QUALITY = 4;
+    private const ORE_TYPE_JACKPOT_MOON = 5;
 
     use IdTrait;
     use NameTrait;
@@ -265,5 +272,19 @@ class ItemType
         }
 
         return null;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isMissionOre(): bool
+    {
+        foreach ($this->attributes as $attribute) {
+            if ($attribute->getAttribute()->getId() === self::ATTRIBUTE_ORE_TYPE) {
+                return $attribute->getValue() === self::ORE_TYPE_MISSION;
+            }
+        }
+
+        return false;
     }
 }
