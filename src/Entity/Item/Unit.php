@@ -23,7 +23,7 @@ class Unit
     use DescriptionTrait;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     private string $display_name;
 
