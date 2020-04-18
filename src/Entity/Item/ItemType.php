@@ -12,6 +12,7 @@ use Adam\Model\Traits\SyncableTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use MongoDB\BSON\Type;
 
 /**
  * Class Type
@@ -25,6 +26,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class ItemType
 {
+    private const ATTRIBUTE_COMPRESS_TO = 1940;
+    private const ATTRIBUTE_COMPRESS_PORTION = 1941;
+
     use IdTrait;
     use NameTrait;
     use ItemIconTrait;
@@ -219,5 +223,47 @@ class ItemType
     public function getAttributes()
     {
         return $this->attributes;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isCompressible(): bool
+    {
+        foreach ($this->attributes as $attribute) {
+            if ($attribute->getAttribute()->getId() === self::ATTRIBUTE_COMPRESS_TO) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getCompressedTypeId(): ?int
+    {
+        foreach ($this->attributes as $attribute) {
+            if ($attribute->getAttribute()->getId() === self::ATTRIBUTE_COMPRESS_TO) {
+                return intval($attribute->getValue());
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getCompressedPortionSize(): ?int
+    {
+        foreach ($this->attributes as $attribute) {
+            if ($attribute->getAttribute()->getId() === self::ATTRIBUTE_COMPRESS_PORTION) {
+                return intval($attribute->getValue());
+            }
+        }
+
+        return null;
     }
 }
