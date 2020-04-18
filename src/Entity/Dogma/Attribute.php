@@ -55,9 +55,9 @@ class Attribute
 
     /**
      * @ORM\ManyToOne(targetEntity="AttributeCategory", inversedBy="attributes")
-     * @ORM\JoinColumn(name="category_id", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id", nullable=true)
      */
-    private AttributeCategory $category;
+    private ?AttributeCategory $category;
 
     /**
      * @return float
@@ -100,9 +100,9 @@ class Attribute
     }
 
     /**
-     * @return AttributeCategory
+     * @return AttributeCategory|null
      */
-    public function getCategory(): AttributeCategory
+    public function getCategory(): ?AttributeCategory
     {
         return $this->category;
     }
