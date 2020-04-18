@@ -157,7 +157,7 @@ class ItemType
     /**
      * @return float|null
      */
-    public function getLowestSellOrder(): ?float
+    public function getLowestSellPrice(): ?float
     {
         /** @var float|null $lowest */
         $lowest = null;
@@ -174,7 +174,16 @@ class ItemType
     /**
      * @return float|null
      */
-    public function getHighestBuyOrder(): ?float
+    public function getLowestSellPricePerM3(): ?float
+    {
+        $price = $this->getLowestSellPrice();
+        return $price ? $price * (1 / $this->volume) : null;
+    }
+
+    /**
+     * @return float|null
+     */
+    public function getHighestBuyPrice(): ?float
     {
         /** @var float|null $highest */
         $highest = null;
@@ -186,5 +195,14 @@ class ItemType
         }
 
         return $highest ?: null;
+    }
+
+    /**
+     * @return float|null
+     */
+    public function getHighestBuyPricePerM3(): ?float
+    {
+        $price = $this->getHighestBuyPrice();
+        return $price ? $price * (1 / $this->volume) : null;
     }
 }
