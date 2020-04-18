@@ -82,12 +82,18 @@ class ItemType
     private ?float $volume;
 
     /**
+     * @ORM\OneToMany(targetEntity="ItemTypeAttribute", mappedBy="type")
+     */
+    private Collection $attributes;
+
+    /**
      * ItemType constructor.
      */
     public function __construct()
     {
         $this->items = new ArrayCollection();
         $this->market_orders = new ArrayCollection();
+        $this->attributes = new ArrayCollection();
     }
 
     /**
