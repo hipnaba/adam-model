@@ -83,6 +83,7 @@ class ItemType
 
     /**
      * @ORM\OneToMany(targetEntity="ItemTypeAttribute", mappedBy="type")
+     * @var ItemTypeAttribute[]|Collection
      */
     private Collection $attributes;
 
@@ -210,5 +211,13 @@ class ItemType
     {
         $price = $this->getHighestBuyPrice();
         return $price ? $price * (1 / $this->volume) : null;
+    }
+
+    /**
+     * @return ItemTypeAttribute[]|Collection
+     */
+    public function getAttributes()
+    {
+        return $this->attributes;
     }
 }
