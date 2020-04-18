@@ -164,7 +164,7 @@ class ItemType
 
         foreach ($this->market_orders as $market_order) {
             if ($market_order->isSellOrder()) {
-                $lowest = min($lowest, $market_order->getPrice());
+                $lowest = min($lowest ?? PHP_INT_MAX, $market_order->getPrice());
             }
         }
 
